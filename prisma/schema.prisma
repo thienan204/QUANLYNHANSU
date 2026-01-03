@@ -1,0 +1,199 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model NHANVIEN {
+  id             Int       @id @default(autoincrement())
+  maNv           String?   @unique @map("ma_nv")
+  stt            Int?
+  hoTen          String?   @map("ho_ten")
+  chucVu         String?   @map("chuc_vu")
+  trinhDo        String?   @map("trinh_do")
+  khoaPhong      String?   @map("khoa_phong")
+  ngayBoNhiem    DateTime? @map("ngay_bo_nhiem")
+  ngayBoNhiemLai DateTime? @map("ngay_bo_nhiem_lai")
+  lyLuanChinhTri String?   @map("ly_luan_chinh_tri")
+  qlNhaNuoc      String?   @map("ql_nha_nuoc")
+  qlBenhVien     String?   @map("ql_benh_vien")
+  ngoaiNgu       String?   @map("ngoai_ngu")
+  tinHoc         String?   @map("tin_hoc")
+  qpAnNinh       String?   @map("qp_an_ninh")
+  ngayBnl        DateTime? @map("ngay_bnl")
+  ghiChu         String?   @map("ghi_chu")
+  ngaySinh       DateTime? @map("ngay_sinh")
+  gioiTinhId     Int?      @map("gioi_tinh_id")
+  gioiTinh       GIOITINH? @relation(fields: [gioiTinhId], references: [id])
+
+  khoaPhongId    Int?      @map("khoa_phong_id")
+  khoaPhongRef   KHOAPHONG? @relation(fields: [khoaPhongId], references: [id])
+
+  chucDanhId     Int?      @map("chuc_danh_id")
+  chucDanhRef    CHUCDANH? @relation(fields: [chucDanhId], references: [id])
+
+  trinhDoId      Int?      @map("trinh_do_id")
+  trinhDoRef     TRINHDO? @relation(fields: [trinhDoId], references: [id])
+
+  chucVuId       Int?      @map("chuc_vu_id")
+  chucVuRef      CHUCVU?   @relation(fields: [chucVuId], references: [id])
+
+  danTocId       Int?      @map("dan_toc_id")
+  danTocRef      DANTOC?   @relation(fields: [danTocId], references: [id])
+
+  hopDongId      Int?      @map("hop_dong_id")
+  hopDongRef     HOPDONG?  @relation(fields: [hopDongId], references: [id])
+
+  chungChiHanhNgheId Int?            @map("chung_chi_hanh_nghe_id")
+  chungChiHanhNgheRef CHUNGCHIHANHNGHE? @relation(fields: [chungChiHanhNgheId], references: [id])
+
+
+  kiemNhiem       NhanVienKiemNhiem[]
+  @@map("nhan_vien")
+}
+
+model GIOITINH {
+  id          Int        @id @default(autoincrement())
+  tenGioiTinh String     @unique @map("ten_gioi_tinh")
+  nhanViens   NHANVIEN[]
+
+  @@map("gioi_tinh")
+}
+
+model KHOAPHONG {
+  id           Int        @id @default(autoincrement())
+  tenKhoaPhong String     @unique @map("ten_khoa_phong")
+  loaiKhoaPhong String?   @map("loai_khoa_phong")
+  nhanViens    NHANVIEN[]
+  kiemNhiem    NhanVienKiemNhiem[]
+
+  @@map("khoa_phong")
+}
+
+model CHUCDANH {
+  id          Int        @id @default(autoincrement())
+  tenChucDanh String     @unique @map("ten_chuc_danh")
+  nhanViens   NHANVIEN[]
+
+  @@map("chuc_danh")
+}
+
+model TRINHDO {
+  id        Int        @id @default(autoincrement())
+  tenTrinhDo String     @unique @map("ten_trinh_do")
+  nhanViens NHANVIEN[]
+
+  @@map("trinh_do")
+}
+
+model CHUCVU {
+  id        Int        @id @default(autoincrement())
+  tenChucVu String     @unique @map("ten_chuc_vu")
+  nhanViens NHANVIEN[]
+  kiemNhiem NhanVienKiemNhiem[]
+
+  @@map("chuc_vu")
+}
+
+
+
+model DANTOC {
+  id        Int        @id @default(autoincrement())
+  tenDanToc String     @unique @map("ten_dan_toc")
+  nhanViens NHANVIEN[]
+
+  @@map("dan_toc")
+}
+
+model HOPDONG {
+  id          Int        @id @default(autoincrement())
+  loaiHopDong String     @unique @map("loai_hop_dong")
+  moTa        String?    @map("mo_ta")
+  nhanViens   NHANVIEN[]
+
+  @@map("hop_dong")
+}
+
+model CHUNGCHIHANHNGHE {
+  id          Int        @id @default(autoincrement())
+  tenChungChi String     @unique @map("ten_chung_chi")
+  noiCap      String?    @map("noi_cap")
+  nhanViens   NHANVIEN[]
+
+  @@map("chung_chi_hanh_nghe")
+}
+
+model ROLE {
+  id          Int          @id @default(autoincrement())
+  tenRole     String       @unique @map("ten_role")
+  moTa        String?      @map("mo_ta")
+  users       User[]
+  permissions PERMISSION[]
+
+  @@map("role")
+}
+
+model PERMISSION {
+  id      Int    @id @default(autoincrement())
+  code    String @unique
+  name    String
+  module  String
+  roles   ROLE[]
+
+  @@map("permission")
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  password String
+  role     String @default("USER") 
+
+  roleId   Int?   @map("role_id")
+  roleRef  ROLE?  @relation(fields: [roleId], references: [id])
+
+  @@map("users")
+}
+
+model FormConfig {
+  id        Int      @id @default(autoincrement())
+  formKey   String   @unique @map("form_key")
+  layout    Json
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("form_configs")
+}
+
+model NhanVienKiemNhiem {
+  id          Int       @id @default(autoincrement())
+  nhanVienId  Int       @map("nhan_vien_id")
+  khoaPhongId Int       @map("khoa_phong_id")
+  chucVuId    Int       @map("chuc_vu_id")
+  
+  nhanVien    NHANVIEN  @relation(fields: [nhanVienId], references: [id], onDelete: Cascade)
+  khoaPhong   KHOAPHONG @relation(fields: [khoaPhongId], references: [id])
+  chucVu      CHUCVU    @relation(fields: [chucVuId], references: [id])
+
+  @@map("nhan_vien_kiem_nhiem")
+}
+
+model MenuItem {
+  id        Int     @id @default(autoincrement())
+  label     String
+  path      String
+  icon      String?
+  order     Int     @default(0)
+  parentId  Int?    @map("parent_id")
+  parent    MenuItem? @relation("MenuHierarchy", fields: [parentId], references: [id])
+  children  MenuItem[] @relation("MenuHierarchy")
+  permissionCode String? @map("permission_code")
+  
+  @@map("menu_items")
+}

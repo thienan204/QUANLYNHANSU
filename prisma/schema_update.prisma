@@ -1,0 +1,10 @@
+
+model FormConfig {
+  id        Int      @id @default(autoincrement())
+  formKey   String   @unique @map("form_key") // e.g., "employee_modal"
+  layout    Json     // Array of field names in order e.g. ["maNv", "hoTen", ...]
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("form_configs")
+}
