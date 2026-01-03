@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "code": "VIEW_EMPLOYEE",
+    "name": "Xem danh sách nhân viên",
+    "module": "Quản lý Nhân sự"
+  },
+  {
+    "id": 2,
+    "code": "CREATE_EMPLOYEE",
+    "name": "Thêm nhân viên mới",
+    "module": "Quản lý Nhân sự"
+  },
+  {
+    "id": 3,
+    "code": "EDIT_EMPLOYEE",
+    "name": "Sửa thông tin nhân viên",
+    "module": "Quản lý Nhân sự"
+  },
+  {
+    "id": 4,
+    "code": "DELETE_EMPLOYEE",
+    "name": "Xóa nhân viên",
+    "module": "Quản lý Nhân sự"
+  },
+  {
+    "id": 5,
+    "code": "VIEW_CATEGORY",
+    "name": "Xem danh mục",
+    "module": "Quản lý Danh mục"
+  },
+  {
+    "id": 6,
+    "code": "MANAGE_CATEGORY",
+    "name": "Quản lý danh mục (Thêm/Sửa/Xóa)",
+    "module": "Quản lý Danh mục"
+  },
+  {
+    "id": 7,
+    "code": "MANAGE_USER",
+    "name": "Quản lý User",
+    "module": "Hệ thống"
+  },
+  {
+    "id": 8,
+    "code": "MANAGE_ROLE",
+    "name": "Quản lý Role & Phân quyền",
+    "module": "Hệ thống"
+  },
+  {
+    "id": 9,
+    "code": "MANAGE_MENU",
+    "name": "Quản lý Menu (Builder)",
+    "module": "Hệ thống"
+  }
+]

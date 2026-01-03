@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "tenRole": "Admin",
+    "moTa": null
+  },
+  {
+    "id": 2,
+    "tenRole": "Khoa phòng",
+    "moTa": null
+  }
+]

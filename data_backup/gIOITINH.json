@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "tenGioiTinh": "Nam"
+  },
+  {
+    "id": 2,
+    "tenGioiTinh": "Nữ"
+  },
+  {
+    "id": 3,
+    "tenGioiTinh": "LGBT"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "tenChucVu": "Giám đốc"
+  },
+  {
+    "id": 2,
+    "tenChucVu": "Phó giám đốc"
+  },
+  {
+    "id": 3,
+    "tenChucVu": "Trưởng khoa"
+  },
+  {
+    "id": 4,
+    "tenChucVu": "Phó trưởng khoa"
+  },
+  {
+    "id": 5,
+    "tenChucVu": "Trưởng phòng"
+  },
+  {
+    "id": 6,
+    "tenChucVu": "Phó trưởng phòng"
+  },
+  {
+    "id": 7,
+    "tenChucVu": "Điều dưỡng trưởng"
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "id": 2,
+    "tenKhoaPhong": "Khoa khám bệnh",
+    "loaiKhoaPhong": "Khoa lâm sàng"
+  },
+  {
+    "id": 3,
+    "tenKhoaPhong": "Khoa cấp cứu",
+    "loaiKhoaPhong": "Khoa lâm sàng"
+  }
+]
